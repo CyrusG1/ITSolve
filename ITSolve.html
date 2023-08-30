@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ITSolve</title>
+</head>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Kiwi Maru;
+    background: linear-gradient(black, white);
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.content {
+    text-align: center;
+    padding: 20px;
+}
+
+.contact-form {
+    margin: 0 auto 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    width: 300px;
+}
+
+.contact-form label,
+.contact-form input,
+.contact-form textarea,
+.contact-form button {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form button {
+    width: auto;
+}
+
+footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+}
+    /* Your CSS styles here */
+</style>
+<body>
+    <div class="container">
+        <!-- Your contact form here -->
+        <div class="content">
+          <img src="C:\Users\cgorj\Documents\IT Support Example/IT Solve Logo.png" width="300" height="300" alt="IT Solve Logo" style="center">
+          <br> </br>
+
+          <h1>Welcome to IT Support</h1>
+          <br> </br>
+          <p>We provide technical solutions for all your IT needs.</p>
+
+          <br></br>
+
+          <h2> Services </h2>
+
+          <br></br>
+
+
+          <img src="C:\Users\cgorj\Documents\IT Support Example/IT support.png" width="300" height="300" alt="IT Support Logo" style="center"> <br>
+          <h2> Consulting </h2>
+
+          <br></br>
+
+          <img src="C:\Users\cgorj\Documents\IT Support Example/IT Repair.png" width="300" height="300" alt="Website Repair Logo" style="center"> <br>
+          <h2> Website Repair </h2>
+          <br></br>
+
+          <img src="C:\Users\cgorj\Documents\IT Support Example/Website Development.png" width="300" height="300" alt="Website Development" style="center"> <br>
+
+
+          <h2> Website Maintenance </h2>
+
+          <br></br>
+
+        <div class="contact-form">
+            <h2>Contact Us</h2>
+            <form id="contactForm" action="process_form.php" method="post">
+                <!-- Your form inputs here -->
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="date">Date of Problem:</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <!-- ... (same as your previous code) ... -->
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <script>
+            // Existing validation code
+            document.getElementById("contactForm").addEventListener("submit", function(event) {
+                var nameInput = document.getElementById("name");
+                var emailInput = document.getElementById("email");
+                var dateInput = document.getElementById("date");
+                var nameValue = nameInput.value;
+                var emailValue = emailInput.value;
+                var dateValue = dateInput.value;
+
+                if (!isValidName(nameValue)) {
+                    event.preventDefault();
+                    alert("Invalid name");
+                }
+
+                if (!isValidEmail(emailValue)) {
+                    event.preventDefault();
+                    alert("Invalid email address");
+                }
+
+                if (!isValidDate(dateValue)) {
+                    event.preventDefault();
+                    alert("Please select a valid date in the past or today. Go back and change it");
+                }
+            });
+
+            function isValidName(name) {
+                var namePattern = /^[a-zA-Z\s]+$/;
+                return namePattern.test(name);
+            }
+
+            function isValidEmail(email) {
+                var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+                return emailPattern.test(email);
+            }
+
+            function isValidDate(date) {
+                var selectedDate = new Date(date);
+                var today = new Date();
+                today.setHours(0, 0, 0, 0); // Set today's time to midnight for accurate comparison
+
+                return selectedDate <= today;
+            }
+
+            // Redirection code
+            document.getElementById("contactForm").addEventListener("submit", function(event) {
+                // Prevent the default form submission behavior
+                event.preventDefault();
+
+                // Redirect to the "thank_you.html" page after successful submission
+                window.location.href = "thank_you.html";
+            });
+        </script>
+    </div>
+</body>
+</html>

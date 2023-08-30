@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display Date from Today</title>
+</head>
+<body>
+    <p id="dateDisplay"></p>
+
+    <script>
+        // Get the current date
+        var today = new Date();
+
+        // Get the parts of the date
+        var year = today.getFullYear();
+        var month = today.getMonth() + 1; // Month is zero-indexed
+        var day = today.getDate();
+
+        // Format the date as "YYYY-MM-DD"
+        var formattedDate = year + '-' + (month < 10 ? '0' : '') + month + '-' + (day < 10 ? '0' : '') + day;
+
+        // Display the formatted date in the HTML element with id "dateDisplay"
+        document.getElementById('dateDisplay').textContent = formattedDate;
+    </script>
+</body>
+</html>
